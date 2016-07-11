@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [ ! -d _deploy ]; then
+  git clone -b gh-pages https://github.com/kenneth-lau/so-simple-site.git _deploy
+fi
+
+if [ -d _site ]; then
+  rm -rf _deploy/*
+  cp -r _site/* _deploy
+  cd _deploy
+  git add .
+  git commit -m "update"
+  git push
+fi
